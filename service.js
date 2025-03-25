@@ -21,11 +21,21 @@ function registerComplaint(event) {
         return;
     }
 
+    // ✅ Store timestamp in ISO format
+    const timestamp = new Date().toISOString(); // Example: "2025-03-26T00:20:39.000Z"
+
     const complaintRef = ref(database, "complaints");
     const newComplaintRef = push(complaintRef);
     const complaintID = newComplaintRef.key;  // Get unique Complaint ID
 
-    set(newComplaintRef, { complaintID, name, email, details, status: "Pending" })
+    set(newComplaintRef, { 
+        complaintID, 
+        name, 
+        email, 
+        details, 
+        status: "Pending",
+        timestamp // ✅ Save timestamp in ISO format
+    })
     .then(() => {
         messageDisplay.innerHTML = 
             `<p style="color: green;">Complaint registered successfully! Your Complaint ID: <strong>${complaintID}</strong></p>`;
@@ -36,7 +46,6 @@ function registerComplaint(event) {
     });
 }
 
-// ✅ Function to Check Complaint Status
 async function checkComplaintStatus(event) {
     event.preventDefault();
 
@@ -50,14 +59,23 @@ async function checkComplaintStatus(event) {
     }
 
     try {
-        const complaintRef = ref(database, `complaints/${complaintID}`); // ✅ Fetch by ID directly
+        const complaintRef = ref(database, `complaints/${complaintID}`);
         const snapshot = await get(complaintRef);
 
         if (snapshot.exists()) {
             const data = snapshot.val();
-            if (data.email === email) {  // ✅ Verify email
-                statusDisplay.innerHTML = 
-                    `<p style="color: green;">Complaint Status: <strong>${data.status}</strong></p>`;
+            if (data.email === email) {  
+                let output = `<p style="color: green;">Complaint Status: <strong>${data.status}</strong></p>`;
+                
+                if (data.timestamp) { // ✅ Convert ISO timestamp to readable format
+                    try {
+                        output += `<p>Registered on: <strong>${new Date(data.timestamp).toLocaleString()}</strong></p>`;
+                    } catch (error) {
+                        console.error("Error parsing timestamp:", error);
+                    }
+                }
+
+                statusDisplay.innerHTML = output;
             } else {
                 statusDisplay.innerHTML = `<p style="color: red;">No complaint found with this email.</p>`;
             }
