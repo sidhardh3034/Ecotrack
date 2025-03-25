@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Smart Waste Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Background Gradient */
+    body {
+      background: linear-gradient(135deg, #1f2b38, #2d3748);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 20px;
+      padding-bottom: 80px;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(135deg, #2d3748, #1f2b38);
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    /* Back to Home Button */
+    .home-btn {
+      position: fixed;
+      left: 20px;
+      top: 70px; /* Adjust this to avoid overlap */
+      padding: 10px 20px;
+      background: #ffeba7;
+      color: #102770;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .home-btn:hover {
+      background: #d4c280;
+    }
+
+    /* Contact Container */
+    .contact-container {
+      max-width: 600px;
+      width: 100%;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+      margin-top: 100px;
+    }
+    .contact-container h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    .contact-form {
+      text-align: left;
+      margin-top: 20px;
+    }
+    .contact-form label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      color: white;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      outline: none;
+    }
+    .contact-form textarea {
+      height: 80px;
+      resize: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid #ffeba7;
+    }
+    .contact-form button {
+      background: #ffeba7;
+      color: #102770;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+    .contact-form button:hover {
+      background: #d4c280;
+    }
+
+    /* Contact Message */
+    #contact-message {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffeba7;
+    }
+
+    /* Footer - Fixed at the Bottom */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: linear-gradient(135deg, #2d3748, #1f2b38);
+      color: white;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+    <!-- Back to Home Button -->
+    <a href="index.html" class="home-btn"><i class="fas fa-home"></i> Back to Home</a>
+
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+
+    <div class="contact-container">
+        <h2>Get in Touch</h2>
+        <p>Have questions? Fill out the form below, and we'll get back to you shortly.</p>
+
+        <!-- Contact Form -->
+        <form id="contact-form" class="contact-form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label for="message">Your Message</label>
+            <textarea id="message" placeholder="Type your message here"></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <p id="contact-message"></p>
+    </div>
+
+    <footer>
+        Contact us at: <strong>support@smartwaste.in</strong> | Helpline: <strong>1800-123-4567</strong>
+    </footer>
+
+    <!-- Include Firebase and Contact Form Handling -->
+    <script type="module" src="./contactus.js"></script>
+</body>
+</html>

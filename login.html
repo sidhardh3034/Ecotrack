@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script type="module" src="login.js"></script>  
+    <script type="module" src="signup.js"></script> 
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+
+        .home-btn {
+            position: fixed;
+            left: 20px;
+            top: 70px; /* Adjust this to avoid overlap */
+            padding: 10px 20px;
+            background: #ffeba7;
+            color: #102770;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+            z-index: 1000; /* Ensure it appears above other elements */
+          }
+          .home-btn:hover {
+            background: #e5d187; /* Slightly darker yellow */
+            transform: translateY(-2px); /* Lift effect */
+            box-shadow: 0 4px 8px rgba(255, 235, 167, 0.5); /* Soft glow */
+          }    
+        body {
+            background: linear-gradient(135deg, #1f2029, #2a2b38);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card-container {
+            width: 400px;
+            height: 520px;
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        #toggle:checked ~ .card {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            background: #2a2b38;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            background: #1f2029;
+            color: white;
+            outline: none;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #ffeba7;
+            color: #102770;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4c280;
+        }
+
+        .toggle-link {
+            margin-top: 15px;
+            display: inline-block;
+            color: #ffeba7;
+            cursor: pointer;
+        }
+
+        #toggle {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-btn"><i class="fas fa-home"></i> Home</a>
+    <div class="card-container">
+        <input type="checkbox" id="toggle">
+        <div class="card">
+            
+            <div class="card-front">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <p id="loginErrorMessage" class="error-message"></p>
+                </form>
+                <label for="toggle" class="toggle-link">Don't have an account? Sign up</label>
+            </div>
+
+            <div class="card-back">
+                <h2>Sign Up</h2>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Secret Key</label>
+                        <input type="text" id="signup-secret" placeholder="Enter Secret Key" required>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                    <p id="signupErrorMessage" class="error-message"></p>
+                </form>
+                <label for="toggle" class="toggle-link">Already have an account? Login</label>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

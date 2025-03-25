@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us - EcoTrack</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #1f2b38, #2d3748);
+      color: white;
+      line-height: 1.6;
+    }
+    /* Header Section */
+    header {
+      background: linear-gradient(135deg, #292c36, #1f2b38);
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #ffeba7, #ffd700);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(255,235,167,0.6);
+    }
+    header p {
+      font-size: 1.2em;
+      opacity: 0.8;
+    }
+    /* Spacer for header */
+    .spacer {
+      height: 30px;
+    }
+    /* Main Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    /* Section Styling */
+    .section {
+      margin-bottom: 60px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+    }
+    .section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      position: relative;
+      text-align: center;
+    }
+    .section h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #ffeba7;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+    .section p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    /* Cards for 'How EcoTrack Works' */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 20px;
+      flex: 1 1 calc(50% - 40px);
+      max-width: calc(50% - 40px);
+      box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      color: #ffeba7;
+    }
+    .card p {
+      font-size: 1em;
+    }
+    /* Advantages Section */
+    .advantages {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .advantages ul {
+      list-style: disc inside;
+      margin-left: 20px;
+    }
+    .advantages li {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+    /* Team Section (2x2 grid) */
+    .team-section {
+      margin-bottom: 60px;
+    }
+    .team-section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .team-box {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .team-box:hover {
+      transform: scale(1.05);
+    }
+    .team-box::before {
+      content: "";
+      position: absolute;
+      inset: 15px;
+      border: 3px solid gold;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .team-box:hover::before {
+      opacity: 1;
+    }
+    .team-box h3 {
+      margin-bottom: 5px;
+      font-size: 1.2em;
+    }
+    .team-box p {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+    .home-btn {
+      position: fixed;
+      left: 20px;
+      top: 70px; /* Adjust this to avoid overlap */
+      padding: 10px 20px;
+      background: #ffeba7;
+      color: #102770;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      z-index: 1000; /* Ensure it appears above other elements */
+    }
+    .home-btn:hover {
+      background: #e5d187; /* Slightly darker yellow */
+      transform: translateY(-2px); /* Lift effect */
+      box-shadow: 0 4px 8px rgba(255, 235, 167, 0.5); /* Soft glow */
+    }    
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #2d3748, #1f2b38);
+      padding: 20px;
+      text-align: center;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="home-btn"><i class="fas fa-home"></i> Home</a>
+    <h1>EcoTrack</h1>
+    <p>Smart Solutions for a Cleaner Tomorrow</p>
+  </header>
+  
+  <div class="container">
+    <!-- Mission & Vision Section -->
+    <div class="section" id="mission">
+      <h2>Our Mission & Vision</h2>
+      <p>
+        At EcoTrack, we strive to revolutionize waste management using innovative IoT technologies.
+        Our mission is to create cleaner, greener urban spaces by transforming the way waste is monitored, collected, and processed.
+        We envision a world where data-driven decisions empower communities to reduce costs, conserve resources, and protect the environment.
+      </p>
+    </div>
+    
+    <!-- How It Works Section -->
+    <div class="section" id="how-it-works">
+      <h2>How EcoTrack Works</h2>
+      <p>
+        EcoTrack utilizes smart sensors placed in waste bins to monitor fill levels in real time.
+        This data is relayed to a central dashboard where advanced algorithms optimize collection routes and schedules.
+        By ensuring timely waste collection, we minimize overflow and reduce unnecessary fuel consumption,
+        leading to lower operational costs and a significant reduction in carbon emissions.
+      </p>
+      <div class="cards">
+        <div class="card">
+          <h3>Real-Time Monitoring</h3>
+          <p>Instant updates on waste levels allow for prompt action and optimized collection schedules.</p>
+        </div>
+        <div class="card">
+          <h3>Smart Analytics</h3>
+          <p>Our system analyzes data to predict peak waste times and improve resource allocation.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Advantages Section -->
+    <div class="section" id="advantages">
+      <h2>Advantages of EcoTrack</h2>
+      <p>
+        EcoTrack offers numerous benefits that transform urban waste management:
+      </p>
+      <div class="advantages">
+        <ul>
+          <li>Efficient resource allocation through real-time data.</li>
+          <li>Significant cost savings in waste collection operations.</li>
+          <li>Reduced environmental impact with optimized routes.</li>
+          <li>Enhanced public health by preventing overflow and pollution.</li>
+          <li>Data-driven insights for continuous urban improvement.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Team Section -->
+    <div class="section" id="team">
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-box">
+          <h3>Nevin Thankachan</h3>
+          <p>Project Manager</p>
+          <p>Email: Nevin@gmail.com</p>
+          <p>Phone: 0000000000</p>
+        </div>
+        <div class="team-box">
+          <h3>Sidhardh S</h3>
+          <p>Lead Developer</p>
+          <p>Email: Sidhardh@gmail.com</p>
+          <p>Phone: 0000000000</p>
+        </div>
+        <div class="team-box">
+          <h3>Cheriachan George</h3>
+          <p>UI/UX Designer</p>
+          <p>Email: Cheriachan@gmail.com</p>
+          <p>Phone: 0000000000</p>
+        </div>
+        <div class="team-box">
+          <h3>Ameen C H</h3>
+          <p>Support Engineer</p>
+          <p>Email: Ameen@gmail.com</p>
+          <p>Phone: 0000000000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    Contact us at: <strong>support@smartwaste.in</strong> | Helpline: <strong>1800-123-4567</strong>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Smart Waste Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="admin_dashboard.js"></script>
+
+    <style>
+        body {
+            background: #1f2029;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 80px;
+            font-family: Arial, sans-serif;
+        }
+
+        .dashboard-container {
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: #2a2b38;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #1f2029;
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        table th {
+            background: #ffeba7;
+            color: #102770;
+        }
+
+        .chart-container {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+            padding: 15px;
+        }
+
+        .home-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: #217dbb;
+        }
+
+        .resolve-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .resolve-btn:hover {
+            background: #1e8449;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Admin Dashboard</h1>
+        <a href="index.html" class="home-btn">Home</a>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="card">
+            <h2>Waste Bin Monitoring</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dustbin ID</th>
+                        <th>Status</th>
+                        <th>Waste Level</th>
+                        <th>Last Updated</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody id="wasteTable"></tbody>
+            </table>
+
+            <div class="chart-container">
+                <canvas id="wasteChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Complaint Records</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Complaint</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="complaint-data"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        Admin Dashboard for Smart Waste Management System
+    </footer>
+
+</body>
+</html>

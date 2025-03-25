@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "dustbins": { ".read": true, ".write": true },
+    "complaints": { ".read": true, ".write": true }
+  }
+}
