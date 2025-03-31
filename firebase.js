@@ -7,8 +7,9 @@ import {
   set, 
   get, 
   onValue, 
-  update  // ✅ Added `update`
+  update  
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";  
+
 import { 
   getAuth, 
   signInWithEmailAndPassword, 
@@ -52,6 +53,12 @@ function submitContactForm(name, email, message) {
   });
 }
 
+// 🔹 Function to Update Waste Chart Data (Ensure This Exists in Dashboard Code)
+function updateWasteChart(data) {
+  console.log("Updating waste chart with data:", data);
+  // You need to implement this in your dashboard where charts are rendered
+}
+
 // 🔹 Export Services for Easy Import
 export { 
   app, 
@@ -61,11 +68,12 @@ export {
   set, 
   get, 
   onValue,  
-  update,  // ✅ Exported `update`
+  update,  
   analytics, 
   auth, 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
   signOut,
-  submitContactForm 
-};  
+  submitContactForm,
+  updateWasteChart // ✅ Added export for updateWasteChart
+};

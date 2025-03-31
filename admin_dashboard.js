@@ -3,6 +3,29 @@ import { database, ref, onValue, update } from "./firebase.js";
 // Global variable for the Chart instance
 let wasteChart;
 
+// Function to show a popup notification when waste level > 50%
+function showPopup(message) {
+    const existingPopup = document.querySelector(".popup-notification");
+    if (existingPopup) return; // Prevent multiple popups
+
+    const popup = document.createElement("div");
+    popup.className = "popup-notification";
+    popup.innerHTML = `
+        <span>${message}</span>
+        <button class="close-popup">&times;</button>
+    `;
+
+    document.body.appendChild(popup);
+
+    // Close popup when button is clicked
+    popup.querySelector(".close-popup").addEventListener("click", () => {
+        popup.remove();
+    });
+
+    // Auto-remove popup after 5 seconds
+    setTimeout(() => popup.remove(), 5000);
+}
+
 // Function to Fetch Waste Bin Data & Update Chart
 function fetchWasteBinData() {
     const wasteRef = ref(database, "dustbins");
@@ -36,6 +59,11 @@ function fetchWasteBinData() {
                     if (!isNaN(timestamp) && timestamp > 0) {
                         lastUpdated = new Date(timestamp * 1000).toLocaleString(); // Convert seconds → readable time
                     }
+                }
+
+                // ✅ Show Popup if Waste Level > 50%
+                if (bin.wasteLevel > 50) {
+                    showPopup(`⚠ Alert: Bin ${binID} is over ${bin.wasteLevel}% full!`);
                 }
 
                 const row = `
@@ -171,6 +199,35 @@ window.resolveComplaint = function (complaintId) {
         console.error("Error resolving complaint:", error);
     });
 };
+
+// Add CSS for popup notification
+const style = document.createElement("style");
+style.innerHTML = `
+    .popup-notification {
+        position: fixed;
+        bottom: 20px;
+        left: 20px; /* ✅ Popup appears on the left */
+        background: rgba(255, 0, 0, 0.9);
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        font-size: 14px;
+        font-weight: bold;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .popup-notification .close-popup {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+`;
+document.head.appendChild(style);
 
 // Fetch Data When Page Loads
 document.addEventListener("DOMContentLoaded", function () {
