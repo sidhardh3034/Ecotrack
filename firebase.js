@@ -19,7 +19,7 @@ import {
 
 // 🔹 Firebase Configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDv3YuOtglg3jFxT_1bkPhwq0qRX9Iv5KA",
+  apiKey: "API KEY",
   authDomain: "iotsasi-bd17f.firebaseapp.com",
   databaseURL: "https://iotsasi-bd17f-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "iotsasi-bd17f",
